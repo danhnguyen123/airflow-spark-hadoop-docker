@@ -1,0 +1,1 @@
+docker build -f cluster-base.Dockerfile -t cluster-base .
