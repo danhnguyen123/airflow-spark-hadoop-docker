@@ -1,4 +1,3 @@
 __pycache__/
-**/logs/**
 minio/storage/**
 .ipynb_checkpoints/
