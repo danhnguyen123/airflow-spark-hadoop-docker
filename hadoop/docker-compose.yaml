@@ -10,17 +10,34 @@ services:
       - ./config
     environment:
         ENSURE_NAMENODE_DIR: "/tmp/hadoop-root/dfs/name"
+    volumes:
+      - ./data:/tmp/data
     networks:
      - bigdata-network
 
-
-  datanode:
+  datanode-1:
     image: apache/hadoop:3
     command: ["hdfs", "datanode"]
     env_file:
       - ./config   
     networks:
      - bigdata-network      
+
+  datanode-2:
+    image: apache/hadoop:3
+    command: ["hdfs", "datanode"]
+    env_file:
+      - ./config   
+    networks:
+     - bigdata-network     
+
+  datanode-3:
+    image: apache/hadoop:3
+    command: ["hdfs", "datanode"]
+    env_file:
+      - ./config   
+    networks:
+     - bigdata-network   
 
   resourcemanager:
     image: apache/hadoop:3
@@ -30,8 +47,6 @@ services:
         - 8088:8088
     env_file:
       - ./config
-    volumes:
-      - ./test.sh:/opt/test.sh
     networks:
      - bigdata-network
 
